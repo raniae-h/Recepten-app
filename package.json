@@ -1,11 +1,15 @@
 {
   "name": "testproject",
   "private": true,
+  "homepage": "https://raniae-h.github.io/testproject",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "predeploy": "npm run build",
+"deploy": "gh-pages -d dist",
+
     "preview": "vite preview"
   },
   "devDependencies": {
