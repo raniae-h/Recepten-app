@@ -1,60 +1,58 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    
-    <link rel="stylesheet" href="style.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recepten app</title>
-  </head>
-  
-  <body>
-    <h1>Recepten</h1>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recepten app</title>
+</head>
 
-    <!--filters, zoekvelden-->
-    <div id="filters">
-      <input type="text" id="search" placeholder="Zoek recepten..." />
-      <select id="category-filter">
-        <option value="">Alle categorieën</option>
-      </select>
-      <select id="sort-select">
-        <option value="az">Sorteer: A-Z</option>
-        <option value="za">Sorteer: Z-A</option>
-      </select>
-    </div>
+<body>
+  <h1>Recepten</h1>
 
-    <!-- Receptenlijst (web1) -->
-    <div class="recepten">
-      <img src="https://www.budgetbytes.com/wp-content/uploads/2022/07/Spaghetti-Bolognese-fork.jpg" alt="Spaghetti Bolognese">
+  <div id="filters">
+    <input type="text" id="search" placeholder="Zoek recepten..." />
+    <select id="category-filter">
+      <option value="">Alle categorieën</option>
+    </select>
+    <select id="sort-select">
+      <option value="az">Sorteer: A-Z</option>
+      <option value="za">Sorteer: Z-A</option>
+    </select>
+  </div>
 
+  <div id="recepten" class="Receptenlijst">
+    <div class="recept">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Spaghetti_bolognese_02.jpg"
+        alt="Spaghetti Bolognese" />
       <h2>Spaghetti Bolognese</h2>
       <p>Een klassiek Italiaans gerecht met gehakt en tomatensaus.</p>
       <p><strong>Moeilijkheid:</strong> Gemakkelijk | <strong>Tijd:</strong> 30 minuten</p>
     </div>
-    
-    <div class="recepten">
-      <img src="https://source.unsplash.com/400x300/?salad" alt="Caesar Salad">
+    <div class="recept">
+      <img src="https://source.unsplash.com/400x300/?salad" alt="Caesar Salad" />
       <h2>Caesar Salad</h2>
       <p>Frisse salade met kip, croutons, Parmezaanse kaas en dressing.</p>
       <p><strong>Moeilijkheid:</strong> Gemakkelijk | <strong>Tijd:</strong> 15 minuten</p>
     </div>
-    
-    <div class="recepten">
-      <img src="https://source.unsplash.com/400x300/?chocolate-cake" alt="Chocoladecake">
+    <div class="recept">
+      <img src="https://source.unsplash.com/400x300/?chocolate-cake" alt="Chocoladecake" />
       <h2>Chocoladecake</h2>
       <p>Rijke, smeuïge cake perfect voor dessertliefhebbers.</p>
       <p><strong>Moeilijkheid:</strong> Gemiddeld | <strong>Tijd:</strong> 1 uur</p>
     </div>
+  </div>
 
-  <!-- Modal voor detailweergave -->
-  <div id="modal">
+  
+  <div id="modal" style="display:none;">
     <div id="modal-content">
       <span id="modal-close">&times;</span>
       <div id="modal-body"></div>
     </div>
   </div>
 
-  <script src="app.js"></script>
-  </body>
+  <script src="main.js"></script>
+</body>
+
 </html>
