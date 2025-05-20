@@ -6,27 +6,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const tijdFilter = document.getElementById("tijd-filter");
   const searchInput = document.getElementById("search");
 
-  
+let lang = 'nl';
+
+
   const dishes = [
-    {
-      strMeal: "Migas",
-      strCategory: "Ontbijt",
-      strArea: "Spanje",
-      moeilijkheid: "Gemiddeld",
-      tijd: "30-40",
-      strMealThumb: "https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg",
-      description: "Traditioneel Spaans gerecht met broodkruimels."
-    },
-    {
-      strMeal: "Sushi",
-      strCategory: "Lunch",
-      strArea: "Japan",
-      moeilijkheid: "Moeilijk",
-      tijd: "60-90",
-      strMealThumb: "https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg",
-      description: "Verse sushi rollen."
-    },
-    {
+  {
+    strMeal: "Migas",
+    strCategory: "Ontbijt",
+    strArea: "Spanje",
+    moeilijkheid: "Gemiddeld",
+    tijd: "30-40",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg",
+    description: "Traditioneel Spaans gerecht met broodkruimels."
+  },
+  {
+    strMeal: "Sushi",
+    strCategory: "Lunch",
+    strArea: "Japan",
+    moeilijkheid: "Moeilijk",
+    tijd: "60-90",
+    strMealThumb: "https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg",
+    description: "Verse sushi rollen."
+  },
+  {
       strMeal: "Burek",
       strCategory: "Snack",
       strArea: "Balkan",
@@ -233,15 +235,19 @@ document.addEventListener("DOMContentLoaded", () => {
       strMealThumb: "https://www.themealdb.com/images/media/meals/hx335q1619789561.jpg",
       description: "Broodje met ei, vlees en kruiden."
     }
-  ];
+
+]; 
   const allRecepten = dishes;
-  
 
-  
+function isFavorite(id) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  return favorites.includes(id);
+}
+
+
   function renderRecepten(recepten) {
-    receptenContainer.innerHTML = ""; 
-
-    recepten.forEach(recept => {
+    receptenContainer.innerHTML = "";
+    recepten.forEach((recept) => {
       const div = document.createElement("div");
       div.classList.add("recept");
 
@@ -254,25 +260,36 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>Moeilijkheid:</strong> ${recept.moeilijkheid} | 
            <strong>Tijd:</strong> ${recept.tijd} min</p>
       `;
+      div.innerHTML = `
+  <img src="${recept.strMealThumb}" alt="${recept.strMeal}" />
+  <h2>${recept.strMeal}</h2>
+  <button class="favorite-btn" data-id="${recept.strMeal}">
+    ${isFavorite(recept.strMeal) ? '❤️' : '♡'}
+  </button>
+  <p>${recept.description || ""}</p>
+  <p><strong>Categorie:</strong> ${recept.strCategory} | 
+     <strong>Land:</strong> ${recept.strArea}</p>
+  <p><strong>Moeilijkheid:</strong> ${recept.moeilijkheid} | 
+     <strong>Tijd:</strong> ${recept.tijd} min</p>
+`;
+
 
       receptenContainer.appendChild(div);
     });
-  }
 
-  
-  function vulHerkomstFilter(recepten) {
-    const herkomstSet = new Set();
-    recepten.forEach(r => herkomstSet.add(r.strArea));
-    herkomstFilter.innerHTML = '<option value="">Alle herkomsten</option>';
-    herkomstSet.forEach(land => {
-      const option = document.createElement("option");
-      option.value = land;
-      option.textContent = land;
-      herkomstFilter.appendChild(option);
+    document.querySelectorAll(".favorite-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.getAttribute("data-id");
+      toggleFavorite(id);
+      filterRecepten();
     });
+  })
+
+
+
+
   }
 
-  
   function vulCategorieFilter(recepten) {
     const categorieSet = new Set();
     recepten.forEach(r => categorieSet.add(r.strCategory));
@@ -285,7 +302,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
+  function vulHerkomstFilter(recepten) {
+    const herkomstSet = new Set();
+    recepten.forEach(r => herkomstSet.add(r.strArea));
+    herkomstFilter.innerHTML = '<option value="">Alle herkomsten</option>';
+    herkomstSet.forEach(land => {
+      const option = document.createElement("option");
+      option.value = land;
+      option.textContent = land;
+      herkomstFilter.appendChild(option);
+    });
+  }
+
+  function vulMoeilijkheidFilter(recepten) {
+  const moeilijkheidSet = new Set();
+  recepten.forEach(r => moeilijkheidSet.add(r.moeilijkheid));
+  moeilijkheidFilter.innerHTML = '<option value="">Alle moeilijkheden</option>';
+  moeilijkheidSet.forEach(m => {
+    const option = document.createElement("option");
+    option.value = m;
+    option.textContent = m;
+    moeilijkheidFilter.appendChild(option);
+  });
+}
+
+function vulTijdFilter() {
+  tijdFilter.innerHTML = `
+    <option value="">Alle tijden</option>
+    <option value="<30">Minder dan 30 min</option>
+    <option value="30-60">30 tot 60 min</option>
+    <option value=">60">Meer dan 60 min</option>
+  `;
+}
+
+
   function parseTijd(tijdStr) {
     if (!tijdStr) return 0;
     if (tijdStr.includes('-')) {
@@ -295,7 +345,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return parseInt(tijdStr);
   }
 
-  
   function filterRecepten() {
     const zoekTekst = searchInput.value.toLowerCase();
     const gekozenCategorie = categoryFilter.value;
@@ -303,39 +352,76 @@ document.addEventListener("DOMContentLoaded", () => {
     const gekozenMoeilijkheid = moeilijkheidFilter.value;
     const gekozenTijd = tijdFilter.value;
 
-    const gefilterde = allRecepten.filter(recept => {
-      const naam = recept.strMeal.toLowerCase();
-      const categorie = recept.strCategory || "";
-      const herkomst = recept.strArea || "";
-      const moeilijkheid = recept.moeilijkheid || "";
-      const tijdMinuten = parseTijd(recept.tijd);
+    const gefilterd = allRecepten.filter(recept => {
+      const titel = recept.strMeal.toLowerCase();
+      const categorie = recept.strCategory;
+      const herkomst = recept.strArea;
+      const moeilijkheid = recept.moeilijkheid;
+      const tijd = parseTijd(recept.tijd);
 
-      if (!naam.includes(zoekTekst)) return false;
-      if (gekozenCategorie && categorie !== gekozenCategorie) return false;
-      if (gekozenHerkomst && herkomst !== gekozenHerkomst) return false;
-      if (gekozenMoeilijkheid && moeilijkheid !== gekozenMoeilijkheid) return false;
+      let tijdMatch = true;
+if (gekozenTijd === "<30") {
+  tijdMatch = tijd < 30;
+} else if (gekozenTijd === "30-60") {
+  tijdMatch = tijd >= 30 && tijd <= 60;
+} else if (gekozenTijd === ">60") {
+  tijdMatch = tijd > 60;
+}
 
-      if (gekozenTijd) {
-        if (gekozenTijd === "<30" && !(tijdMinuten < 30)) return false;
-        if (gekozenTijd === "30-60" && !(tijdMinuten >= 30 && tijdMinuten <= 60)) return false;
-        if (gekozenTijd === ">60" && !(tijdMinuten > 60)) return false;
-      }
 
-      return true;
+      return (
+        titel.includes(zoekTekst) &&
+        (!gekozenCategorie || categorie === gekozenCategorie) &&
+        (!gekozenHerkomst || herkomst === gekozenHerkomst) &&
+        (!gekozenMoeilijkheid || moeilijkheid === gekozenMoeilijkheid) &&
+        tijdMatch
+      );
     });
 
-    renderRecepten(gefilterde);
+    renderRecepten(gefilterd);
   }
 
-  
+  function toggleFavorite(id) {
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(fav => fav !== id);
+  } else {
+    favorites.push(id);
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  filterRecepten();
+}
+
+function isFavorite(id) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  return favorites.includes(id);
+}
+
+
+  renderRecepten(allRecepten);
+  vulCategorieFilter(allRecepten);
+  vulHerkomstFilter(allRecepten);
+
   searchInput.addEventListener("input", filterRecepten);
   categoryFilter.addEventListener("change", filterRecepten);
   herkomstFilter.addEventListener("change", filterRecepten);
   moeilijkheidFilter.addEventListener("change", filterRecepten);
   tijdFilter.addEventListener("change", filterRecepten);
 
-  
-  vulHerkomstFilter(allRecepten);
+
+  document.addEventListener("DOMContentLoaded", function () {
   vulCategorieFilter(allRecepten);
-  renderRecepten(allRecepten);
+  vulHerkomstFilter(allRecepten);
+  vulMoeilijkheidFilter(allRecepten);
+  vulTijdFilter();
 });
+
+
+searchInput.addEventListener("input", filterRecepten);
+categoryFilter.addEventListener("change", filterRecepten);
+herkomstFilter.addEventListener("change", filterRecepten);
+moeilijkheidFilter.addEventListener("change", filterRecepten);
+tijdFilter.addEventListener("change", filterRecepten);
+
+
+})

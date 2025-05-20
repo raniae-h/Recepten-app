@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,64 +9,80 @@
 </head>
 
 <body>
-  <h1>Recepten</h1>
+
+  <nav>
+    <a href="#" class="logo">ReceptenApp</a>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Recepten</a></li>
+      <li><a href="#">Favorieten</a></li>
+      <li><a href="#">Over</a></li>
+    </ul>
+    <div class="menu-toggle">&#9776;</div>
+  </nav>
+
+  <select id="language-select">
+    <option value="nl">Nederlands</option>
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+  </select>
+
+  <h1 id="title">Recepten</h1>
 
   <div id="filters">
     <input type="text" id="search" placeholder="Zoek recepten..." />
     <select id="category-filter">
       <option value="">Alle categorieën</option>
     </select>
-    
     <select id="herkomst-filter">
       <option value="">Alle herkomsten</option>
-      
     </select>
-    
     <select id="moeilijkheid-filter">
-      <option value="">Alle moeilijkheidsgraden</option>
-      <option value="Gemakkelijk">Gemakkelijk</option>
-      <option value="Gemiddeld">Gemiddeld</option>
-      <option value="Moeilijk">Moeilijk</option>
+      <option value="">Moeilijkheid</option>
     </select>
-    
     <select id="tijd-filter">
-      <option value="">Alle tijden</option>
-      <option value="<30">Minder dan 30 min</option>
-      <option value="30-60">30 tot 60 min</option>
-      <option value=">60">Meer dan 60 min</option>
+      <option value="">Tijd</option>
     </select>
+  </div>
+
+  <div id="recepten">
 
   </div>
 
-  <div id="recepten" class="Receptenlijst">
-    <div class="recept">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Spaghetti_bolognese_02.jpg"
-        alt="Spaghetti Bolognese" />
-      <h2>Spaghetti Bolognese</h2>
-      <p>Een klassiek Italiaans gerecht met gehakt en tomatensaus.</p>
-      <p><strong>Moeilijkheid:</strong> Gemakkelijk | <strong>Tijd:</strong> 30 minuten</p>
-    </div>
-    <div class="recept">
-      <img src="https://source.unsplash.com/400x300/?salad" alt="Caesar Salad" />
-      <h2>Caesar Salad</h2>
-      <p>Frisse salade met kip, croutons, Parmezaanse kaas en dressing.</p>
-      <p><strong>Moeilijkheid:</strong> Gemakkelijk | <strong>Tijd:</strong> 15 minuten</p>
-    </div>
-    <div class="recept">
-      <img src="https://source.unsplash.com/400x300/?chocolate-cake" alt="Chocoladecake" />
-      <h2>Chocoladecake</h2>
-      <p>Rijke, smeuïge cake perfect voor dessertliefhebbers.</p>
-      <p><strong>Moeilijkheid:</strong> Gemiddeld | <strong>Tijd:</strong> 1 uur</p>
-    </div>
-  </div>
-
-  
   <div id="modal" style="display:none;">
     <div id="modal-content">
       <span id="modal-close">&times;</span>
       <div id="modal-body"></div>
     </div>
   </div>
+
+  
+  <script>
+    const translations = {
+      nl: { title: "Recepten", searchPlaceholder: "Zoeken..." },
+      en: { title: "Recipes", searchPlaceholder: "Search..." },
+      fr: { title: "Recettes", searchPlaceholder: "Recherche..." }
+    };
+
+    const langSelect = document.getElementById("language-select");
+
+    function updateTexts(lang) {
+      document.documentElement.lang = lang;
+      document.getElementById("title").textContent = translations[lang].title;
+      const searchInput = document.getElementById("search");
+      if (searchInput) {
+        searchInput.placeholder = translations[lang].searchPlaceholder;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updateTexts("nl");
+    });
+
+    langSelect.addEventListener("change", e => {
+      updateTexts(e.target.value);
+    });
+  </script>
 
   <script src="main.js"></script>
 </body>
