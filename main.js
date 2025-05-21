@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const tijdFilter = document.getElementById("tijd-filter");
   const searchInput = document.getElementById("search");
 
-let lang = 'nl';
 
 
   const dishes = [
@@ -94,7 +93,7 @@ let lang = 'nl';
     {
       strMeal: "Big Mac",
       strCategory: "Fastfood",
-      strArea: "VS",
+      strArea: "Verenigde Staten",
       moeilijkheid: "Gemakkelijk",
       tijd: "20-30",
       strMealThumb: "https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg",
@@ -184,7 +183,7 @@ let lang = 'nl';
     {
       strMeal: "Fish Pie",
       strCategory: "Hoofdgerecht",
-      strArea: "VK",
+      strArea: "Verenigd Koninkrijk",
       moeilijkheid: "Gemiddeld",
       tijd: "60-75",
       strMealThumb: "https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg",
@@ -211,7 +210,7 @@ let lang = 'nl';
     {
       strMeal: "Kedgeree",
       strCategory: "Ontbijt",
-      strArea: "VK",
+      strArea: "Verenigde Staten",
       moeilijkheid: "Gemiddeld",
       tijd: "45-60",
       strMealThumb: "https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg",
@@ -408,6 +407,9 @@ function isFavorite(id) {
   renderRecepten(allRecepten);
   vulCategorieFilter(allRecepten);
   vulHerkomstFilter(allRecepten);
+  vulMoeilijkheidFilter(allRecepten)
+  vulTijdFilter(allRecepten)
+
 
   searchInput.addEventListener("input", filterRecepten);
   categoryFilter.addEventListener("change", filterRecepten);

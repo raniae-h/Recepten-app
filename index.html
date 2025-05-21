@@ -18,12 +18,15 @@
   <ul class="nav-links">
     <li><a href="#">Home</a></li>
     <li><a href="#">Recepten</a></li>
-    <li><a href="#">Over</a></li>
+    <li><a href="#">Feestdagen</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Over ons</a></li>
   </ul>
 
   <div class="hamburger-wrapper">
   <button id="hamburger" aria-label="Menu">&#9776;</button>
   <div id="hamburger-menu">
+    <p>.</p>
     <button id="toggle-dark-mode" aria-label="Toggle dark mode">🌙/☀️</button>
     <select id="language-select" aria-label="Select language">
       <option value="nl">NL</option>
@@ -101,7 +104,7 @@
   const toggleBtn = document.getElementById('toggle-dark-mode');
   const body = document.body;
 
-  // Check of er een voorkeur is opgeslagen
+
   if (localStorage.getItem('dark-mode') === 'true') {
     body.classList.add('dark-mode');
     toggleBtn.textContent = '☀️';
@@ -111,15 +114,46 @@
     body.classList.toggle('dark-mode');
     const isDark = body.classList.contains('dark-mode');
 
-    // Bewaar voorkeur
+    
     localStorage.setItem('dark-mode', isDark);
 
-    // Update icoon
+    
     toggleBtn.textContent = isDark ? '☀️' : '🌙';
   });
 </script>
 
 
 </body>
+
+<footer>
+<div class="footer-section">
+  <h4>Navigatie</h4>
+<ul>
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Recepten</a></li>
+  <li><a href="#">Feestdagen</a></li>
+  <li><a href="#">Contact</a></li>
+  <li><a href="#">Over ons</a></li>
+</ul>
+</div> 
+
+<div class="footer-section">
+  <h4>Volg ons</h4>
+  <div class="socials">
+<a href="https://www.instagram.com/foodcorner" target="_blank">Instagram</a>
+<a href="https://www.facebook.com/foodcorner" target="_blank">Facebook</a>
+</div>
+</div>
+
+<div class="footer-bottom">
+
+<p>&copy; 2025 FoodCorner. Alle rechten voorbehouden.</p>
+
+
+
+<a href="#">Privacybeleid</a> | <a href="#">Gebruiksvoorwaarden</a>
+</div>
+
+</footer>
 
 </html>

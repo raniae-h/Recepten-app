@@ -19,7 +19,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--background);
   margin: 0;
-  padding: 20px;
+  padding: 0px;
   color: var(--text);
 }
 
@@ -61,8 +61,9 @@ h2 {
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
-  max-height: 180px;
-  margin-bottom: 12px;
+  max-height: 250px;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .recept h2 {
@@ -155,7 +156,7 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a:focus {
-  color: var(--link-hover);
+  color: #fdf6ee;
   outline: none;
 }
 
@@ -178,6 +179,8 @@ nav ul li a:focus {
   border-radius: 10px;
   width: 90%;
   max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -189,7 +192,6 @@ nav ul li a:focus {
   cursor: pointer;
 }
 
-/* Responsiveness */
 @media (max-width: 600px) {
   #filters {
     flex-direction: column;
@@ -507,4 +509,79 @@ nav {
 
 .dark-mode #hamburger {
   color: #eee;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+footer a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+footer a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 10px;
+  color: #decab9;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: #ddd;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.footer-section ul li a:hover,
+.footer-section .socials a:hover {
+  color: #decab9;
+}
+
+.socials a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #444;
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
 }
