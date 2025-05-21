@@ -335,6 +335,13 @@ function vulTijdFilter() {
   `;
 }
 
+const hamburgerBtn = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('hamburger-menu');
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+
 
   function parseTijd(tijdStr) {
     if (!tijdStr) return 0;

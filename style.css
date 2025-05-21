@@ -1,39 +1,49 @@
+:root {
+  --background: #fdf6ee;
+  --primary: #f9c6c9;
+  --accent: #cde8e5;
+  --text: #333333;
+  --hover: #e2e2e2;
+  --nav-bg: #decab9;
+  --link-hover: #a3cfc4;
+  --card-bg: #ffffff;
+  --input-border: #ccc;
+}
 
-/* Algemene reset en basis */
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fafafa;
+  background-color: var(--background);
   margin: 0;
   padding: 20px;
-  color: #333;
+  color: var(--text);
 }
 
 h1, h2 {
   font-weight: 600;
-  color: #2c3e50;
+  color: #fdf6ee
 }
 
 h2 {
   margin-top: 0;
 }
 
-/* Container van recepten */
 #recepten {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   margin-top: 30px;
+  padding: 2rem;
 }
 
-/* Eén recept kaart */
 .recept {
-  background-color: #fff;
+  background-color: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   padding: 15px;
   transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   display: flex;
@@ -44,7 +54,7 @@ h2 {
 
 .recept:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 
 .recept img {
@@ -58,7 +68,7 @@ h2 {
 .recept h2 {
   font-size: 1.3rem;
   margin-bottom: 8px;
-  color: #000000; 
+  color: var(--text); 
 }
 
 .recept p {
@@ -66,7 +76,6 @@ h2 {
   color: #555;
   margin: 5px 0;
 }
-
 
 .favorite-btn {
   background: none;
@@ -79,8 +88,9 @@ h2 {
 
 .favorite-btn:hover {
   transform: scale(1.2);
-  color: #e74c3c;
+  color: #db5f5f;
 }
+
 
 .filters {
   display: flex;
@@ -94,24 +104,24 @@ h2 {
 .filters input[type="search"] {
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border);
   min-width: 150px;
   font-size: 1rem;
+  background-color: #fff;
   transition: border-color 0.3s ease;
 }
 
 .filters select:focus, 
 .filters input[type="search"]:focus {
   outline: none;
-  border-color: #6e513f;
-  box-shadow: 0 0 5px #27ae60;
+  border-color: var(--accent);
+  box-shadow: 0 0 5px var(--accent);
 }
 
-
 nav {
-  background-color: #6e513f;
+  background-color: var(--nav-bg);
   padding: 15px 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -121,11 +131,10 @@ nav {
 }
 
 nav .logo {
-  color: white;
+  color: var(--text);
   font-weight: 700;
   font-size: 1.5rem;
   text-decoration: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 nav ul {
@@ -137,7 +146,7 @@ nav ul {
 }
 
 nav ul li a {
-  color: white;
+  color: var(--text);
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -146,62 +155,8 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a:focus {
-  color: #d4efdf;
+  color: var(--link-hover);
   outline: none;
-}
-
-#filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1.5rem 2rem;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
-}
-
-#filters input,
-#filters select {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #fff;
-}
-
-#recepten {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.recept-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: #fff;
-  transition: box-shadow 0.3s;
-}
-
-.recept-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.recept-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.recept-card h2 {
-  font-size: 1.3rem;
-  margin: 1rem;
-}
-
-.recept-card p {
-  margin: 0 1rem 1rem;
-  color: #555;
-  font-size: 0.95rem;
 }
 
 #modal {
@@ -210,7 +165,7 @@ nav ul li a:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   display: none;
   justify-content: center;
   align-items: center;
@@ -234,6 +189,7 @@ nav ul li a:focus {
   cursor: pointer;
 }
 
+/* Responsiveness */
 @media (max-width: 600px) {
   #filters {
     flex-direction: column;
@@ -244,3 +200,311 @@ nav ul li a:focus {
   }
 }
 
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode nav {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode nav .logo,
+body.dark-mode nav ul li a {
+  color: #e0e0e0;
+}
+
+body.dark-mode nav ul li a:hover {
+  color: #a3cfc4;
+}
+
+body.dark-mode .recept {
+  background-color: #1e1e1e;
+  box-shadow: 0 3px 10px rgba(255,255,255,0.05);
+}
+
+body.dark-mode .recept p {
+  color: #ccc;
+}
+
+body.dark-mode .filters,
+body.dark-mode #filters {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #444;
+}
+
+body.dark-mode .filters select,
+body.dark-mode .filters input[type="search"],
+body.dark-mode #filters select,
+body.dark-mode #filters input {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+
+body.dark-mode #modal-content {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+
+body.dark-mode .favorite-btn:hover {
+  color: #e74c3c;
+}
+
+#toggle-dark-mode {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+#toggle-dark-mode:hover {
+  transform: scale(1.2);
+}
+
+#hamburger-btn {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  display: none; 
+}
+
+#mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--nav-bg);
+  padding: 1rem;
+  position: absolute;
+  top: 60px; 
+  right: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1500;
+}
+
+#mobile-menu.show {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  #hamburger-btn {
+    display: block;
+  }
+  
+  nav ul {
+    display: none;
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--nav-bg);
+  padding: 15px 30px;
+  position: relative;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#hamburger {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  display: none; 
+}
+
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; 
+  }
+
+  #hamburger {
+    display: block;
+  }
+
+  #hamburger-menu {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background: var(--card-bg);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #hamburger-menu a {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+  #hamburger-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+
+@media (min-width: 769px) {
+  #hamburger {
+    display: block;
+  }
+
+  #hamburger-menu {
+    position: fixed;
+    top: 60%;
+    right: 0;
+    transform: translateX(100%);
+    background: var(--card-bg);
+    padding: 10px 20px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -3px 3px 10px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  #hamburger-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+#hamburger-menu.open {
+  display: flex;
+}
+  
+  #hamburger:hover + #hamburger-menu,
+  #hamburger-menu:hover {
+    transform: translateX(0) translateY(-50%);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.hamburger-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#hamburger-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 999;
+}
+
+.hamburger-wrapper:hover #hamburger-menu {
+  display: flex;
+}
+
+.recipe-header {
+  background-image: url('https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg'); /* pas dit pad aan als nodig */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 2rem;
+  position: relative;
+}
+
+.recipe-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 0;
+}
+
+.recipe-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+#hamburger-menu.active {
+  display: flex;
+}
+
+#hamburger-menu button,
+#hamburger-menu select {
+  background-color: transparent;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+#hamburger-menu button:not(:last-child),
+#hamburger-menu select:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+
+#hamburger-menu button:hover,
+#hamburger-menu select:hover {
+  background-color: #f0f0f0;
+}
+
+
+.dark-mode #hamburger-menu {
+  background-color: #222;
+  border: 1px solid #444;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.dark-mode #hamburger-menu button,
+.dark-mode #hamburger-menu select {
+  color: #eee;
+}
+
+.dark-mode #hamburger-menu button:hover,
+.dark-mode #hamburger-menu select:hover {
+  background-color: #333;
+}
+
+.dark-mode #hamburger {
+  color: #eee;
+}
