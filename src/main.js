@@ -19,43 +19,43 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentLang = 'nl';
 
   const translations = {
-  nl: {
-    title: "Recepten",
-    searchPlaceholder: "Zoeken...",
-    category: "Categorie",
-    origin: "Herkomst",
-    difficulty: "Moeilijkheidsgraad",
-    time: "Tijd",
-    allTimes: "Alle tijden",
-    timeLessThan30: "< 30 minuten",
-    time30to60: "30 - 60 minuten",
-    timeMoreThan60: "> 60 minuten"
-  },
-  en: {
-    title: "Recipes",
-    searchPlaceholder: "Search...",
-    category: "Category",
-    origin: "Origin",
-    difficulty: "Difficulty",
-    time: "Time",
-    allTimes: "All times",
-    timeLessThan30: "< 30 minutes",
-    time30to60: "30 - 60 minutes",
-    timeMoreThan60: "> 60 minutes"
-  },
-  fr: {
-    title: "Recettes",
-    searchPlaceholder: "Recherche...",
-    category: "Catégorie",
-    origin: "Origine",
-    difficulty: "Difficulté",
-    time: "Temps",
-    allTimes: "Tous les temps",
-    timeLessThan30: "< 30 minutes",
-    time30to60: "30 - 60 minutes",
-    timeMoreThan60: "> 60 minutes"
-  }
-};
+    nl: {
+      title: "Recepten",
+      searchPlaceholder: "Zoeken...",
+      category: "Categorie",
+      origin: "Herkomst",
+      difficulty: "Moeilijkheidsgraad",
+      time: "Tijd",
+      allTimes: "Alle tijden",
+      timeLessThan30: "< 30 minuten",
+      time30to60: "30 - 60 minuten",
+      timeMoreThan60: "> 60 minuten"
+    },
+    en: {
+      title: "Recipes",
+      searchPlaceholder: "Search...",
+      category: "Category",
+      origin: "Origin",
+      difficulty: "Difficulty",
+      time: "Time",
+      allTimes: "All times",
+      timeLessThan30: "< 30 minutes",
+      time30to60: "30 - 60 minutes",
+      timeMoreThan60: "> 60 minutes"
+    },
+    fr: {
+      title: "Recettes",
+      searchPlaceholder: "Recherche...",
+      category: "Catégorie",
+      origin: "Origine",
+      difficulty: "Difficulté",
+      time: "Temps",
+      allTimes: "Tous les temps",
+      timeLessThan30: "< 30 minutes",
+      time30to60: "30 - 60 minutes",
+      timeMoreThan60: "> 60 minutes"
+    }
+  };
 
 
 
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("label[for='herkomst-filter']").innerText = translations[currentLang].origin;
     document.querySelector("label[for='moeilijkheid-filter']").innerText = translations[currentLang].difficulty;
     document.querySelector("label[for='tijd-filter']").innerText = translations[currentLang].time;
-    
+
 
 
     vulCategorieFilter(allRecepten);
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  
+
   // Taal
   languageSwitcher.addEventListener("change", (e) => {
     currentLang = e.target.value;

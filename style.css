@@ -23,7 +23,8 @@ body {
   color: var(--text);
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: 600;
   color: #fdf6ee
 }
@@ -43,7 +44,7 @@ h2 {
 .recept {
   background-color: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 15px;
   transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   display: flex;
@@ -54,7 +55,7 @@ h2 {
 
 .recept:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .recept img {
@@ -69,7 +70,7 @@ h2 {
 .recept h2 {
   font-size: 1.3rem;
   margin-bottom: 8px;
-  color: var(--text); 
+  color: var(--text);
 }
 
 .recept p {
@@ -101,7 +102,7 @@ h2 {
   justify-content: center;
 }
 
-.filters select, 
+.filters select,
 .filters input[type="search"] {
   padding: 10px 12px;
   border-radius: 8px;
@@ -112,7 +113,7 @@ h2 {
   transition: border-color 0.3s ease;
 }
 
-.filters select:focus, 
+.filters select:focus,
 .filters input[type="search"]:focus {
   outline: none;
   border-color: var(--accent);
@@ -122,7 +123,7 @@ h2 {
 nav {
   background-color: var(--nav-bg);
   padding: 15px 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -222,7 +223,7 @@ body.dark-mode nav ul li a:hover {
 
 body.dark-mode .recept {
   background-color: #1e1e1e;
-  box-shadow: 0 3px 10px rgba(255,255,255,0.05);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .recept p {
@@ -272,7 +273,7 @@ body.dark-mode .favorite-btn:hover {
   border: none;
   cursor: pointer;
   color: var(--text);
-  display: none; 
+  display: none;
 }
 
 #mobile-menu {
@@ -282,10 +283,10 @@ body.dark-mode .favorite-btn:hover {
   background-color: var(--nav-bg);
   padding: 1rem;
   position: absolute;
-  top: 60px; 
+  top: 60px;
   right: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1500;
 }
 
@@ -297,7 +298,7 @@ body.dark-mode .favorite-btn:hover {
   #hamburger-btn {
     display: block;
   }
-  
+
   nav ul {
     display: none;
   }
@@ -340,13 +341,13 @@ nav {
   border: none;
   color: var(--text);
   cursor: pointer;
-  display: none; 
+  display: none;
 }
 
 
 @media (max-width: 768px) {
   .nav-links {
-    display: none; 
+    display: none;
   }
 
   #hamburger {
@@ -360,7 +361,7 @@ nav {
     background: var(--card-bg);
     padding: 10px 20px;
     border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     gap: 15px;
     opacity: 0;
@@ -369,11 +370,11 @@ nav {
   }
 
   #hamburger-menu a {
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-  display: block;
-}
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
 
   #hamburger-menu.active {
     opacity: 1;
@@ -395,7 +396,7 @@ nav {
     background: var(--card-bg);
     padding: 10px 20px;
     border-radius: 8px 0 0 8px;
-    box-shadow: -3px 3px 10px rgba(0,0,0,0.1);
+    box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     gap: 20px;
     opacity: 0;
@@ -404,14 +405,14 @@ nav {
   }
 
   #hamburger-menu a:hover {
-  background-color: #f0f0f0;
-}
+    background-color: #f0f0f0;
+  }
 
-#hamburger-menu.open {
-  display: flex;
-}
-  
-  #hamburger:hover + #hamburger-menu,
+  #hamburger-menu.open {
+    display: flex;
+  }
+
+  #hamburger:hover+#hamburger-menu,
   #hamburger-menu:hover {
     transform: translateX(0) translateY(-50%);
     opacity: 1;
@@ -442,7 +443,8 @@ nav {
 }
 
 .recipe-header {
-  background-image: url('https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg'); /* pas dit pad aan als nodig */
+  background-image: url('https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg');
+  /* pas dit pad aan als nodig */
   background-size: cover;
   background-position: center;
   color: white;
@@ -453,12 +455,15 @@ nav {
 .recipe-header::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
 }
 
-.recipe-header > * {
+.recipe-header>* {
   position: relative;
   z-index: 1;
 }
