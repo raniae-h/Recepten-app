@@ -585,3 +585,7 @@ footer {
   font-size: 13px;
   color: #aaa;
 }
+
+.filters label {
+  display: none;
+}
