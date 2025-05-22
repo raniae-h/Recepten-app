@@ -7,7 +7,7 @@
 
   <title>FoodCorner</title>
 
-  <link rel="stylesheet" crossorigin href="/assets/index-M3HxMVjf.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-CQ86EYc-.css">
 </head>
 
 <body>
@@ -15,6 +15,8 @@
   <nav>
   <a href="#" class="logo">FoodCorner</a>
 
+
+  
   <ul class="nav-links">
     <li><a href="#">Home</a></li>
     <li><a href="#">Recepten</a></li>
@@ -28,7 +30,7 @@
   <div id="hamburger-menu">
     <p>.</p>
     <button id="toggle-dark-mode" aria-label="Toggle dark mode">🌙/☀️</button>
-    <select id="language-select" aria-label="Select language">
+    <select id="language-select" aria-label="Taalwisselaar">
       <option value="nl">NL</option>
       <option value="en">ENG</option>
       <option value="fr">FR</option>
@@ -45,17 +47,21 @@
 
   <div class="filters" id="filters">
     <input type="text" id="search" placeholder="Zoek recepten..." />
+    <label for="category-filter">Categorie</label>
     <select id="category-filter">
-      <option value="">Alle categorieën</option>
+      <option value="">Categorieën</option>
     </select>
+    <label for="herkomst-filter">Herkomst</label>
     <select id="herkomst-filter">
-      <option value="">Alle herkomsten</option>
+      <option value="">Herkomsten</option>
     </select>
+    <label for="moeilijkheid-filter">Moeilijkheidsgraad</label>
     <select id="moeilijkheid-filter">
-      <option value="">Moeilijkheid</option>
+      <option value="">Moeilijkheidsgraad</option>
     </select>
+    <label for="tijd-filter">Tijd</label>
     <select id="tijd-filter">
-      <option value="">Tijd</option>
+      <option value="all">Tijd</option>
     </select>
   </div>
 </section>
@@ -73,10 +79,12 @@
   
   <script>
     const translations = {
-      nl: { title: "Recepten", searchPlaceholder: "Zoeken..." },
-      en: { title: "Recipes", searchPlaceholder: "Search..." },
-      fr: { title: "Recettes", searchPlaceholder: "Recherche..." }
+      nl: { title: "Recepten", searchPlaceholder: "Zoeken...",  category: "Categorie", origin: "Herkomst", difficulty: "Moeilijkheidsgraad", time: "Tijd", allTimes: "Alle tijden", timeLessThan30: "< 30 minuten", time30to60: "30 - 60 minuten", timeMoreThan60: "> 60 minuten"},
+      en: { title: "Recipes", searchPlaceholder: "Search...", category: "Category", origin: "Origin", difficulty: "Difficulty", time: "Time", allTimes: "All times", timeLessThan30: "< 30 minutes", time30to60: "30 - 60 minutes", timeMoreThan60: "> 60 minutes" },
+      fr: { title: "Recettes", searchPlaceholder: "Recherche...", category: "Catégorie", origin: "Origine", difficulty: "Difficulté", time: "Temps", allTimes: "Tous les temps", timeLessThan30: "< 30 minutes", time30to60: "30 - 60 minutes", timeMoreThan60: "> 60 minutes" }
     };
+
+    
 
     const langSelect = document.getElementById("language-select");
 
@@ -98,32 +106,10 @@
     });
   </script>
 
-  <script src="main.js"></script>
-
-<script>
-  const toggleBtn = document.getElementById('toggle-dark-mode');
-  const body = document.body;
+ 
 
 
-  if (localStorage.getItem('dark-mode') === 'true') {
-    body.classList.add('dark-mode');
-    toggleBtn.textContent = '☀️';
-  }
 
-  toggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-
-    
-    localStorage.setItem('dark-mode', isDark);
-
-    
-    toggleBtn.textContent = isDark ? '☀️' : '🌙';
-  });
-</script>
-
-
-</body>
 
 <footer>
 <div class="footer-section">
@@ -156,4 +142,32 @@
 
 </footer>
 
+
+ <script src="src/main.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById('toggle-dark-mode');
+  const body = document.body;
+
+
+  if (localStorage.getItem('dark-mode') === 'true') {
+    body.classList.add('dark-mode');
+    toggleBtn.textContent = '☀️';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+
+    
+    localStorage.setItem('dark-mode', isDark);
+
+    
+    toggleBtn.textContent = isDark ? '☀️' : '🌙';
+  });
+});
+</script>
+
+</body>
 </html>
